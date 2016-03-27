@@ -3,8 +3,11 @@
 <script src="vendor/require.js/require.js"></script>
 <script src="vendor/three.js/examples/js/Detector.js"></script>
 <script src="vendor/threex.windowresize.js"></script>
-<body style='margin: 0px; background-color: #bbbbbb; overflow: hidden;'><script>
-require([], function(){
+<body style="margin: 0px; background-color: #bbbbbb; overflow: hidden;">
+	<script>
+require(
+	["bower_components/threex.nyancat/package.require.js"]
+	, function(){
 	// detect WebGL
 	if( !Detector.webgl ){
 		Detector.addGetWebGLMessage();
@@ -24,6 +27,15 @@ require([], function(){
 
 	// handle window resize events
 	var winResize	= new THREEx.WindowResize(renderer, camera)
+
+	//27-03-2016 09:44 PM MK NYANCAT! 
+	var nyanCat = new THREEx.NyanCat();
+
+	//27-03-2016 09:47 PM MK Scale of NyanCat 
+	nyanCat.container.scale.multiplyScalar(2/30);
+
+	//27-03-2016 09:47 PM MK adds the Nyancat to our scene.
+	scene.add( nyanCat.container );
 
 	//////////////////////////////////////////////////////////////////////////////////
 	//		default 3 points lightning					//
@@ -89,4 +101,5 @@ require([], function(){
 		})
 	})
 })
-</script></body>
+</script>
+</body>
